@@ -37,14 +37,14 @@ const Main = (props: IMainProps) => (
                 </a>
               </Link>
             </li>
-            <li className="mr-6">
+            {/* <li className="mr-6">
               <a
                 className="text-gray-700 border-none hover:text-gray-900"
                 href="https://github.com/ixartz/Next-js-Boilerplate"
               >
                 GitHub
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
