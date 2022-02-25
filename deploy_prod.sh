@@ -14,4 +14,4 @@ docker stop portal  && docker rm portal
 # delete existing image
 
 # run new image
-docker run  -d -p 5010:3000  --name portal  portal 
+docker run  -d -p 5100:3000  --name portal  portal 
