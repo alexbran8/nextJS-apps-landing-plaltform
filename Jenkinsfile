@@ -40,7 +40,7 @@ node {
 
         stage 'Deploy'
          dir('/apps/portal'){
-            // sh 'chmod +x deploy_prod.sh'
+            sh 'chmod +x deploy_prod.sh'
             // sh 'cat deploy_prod.sh'
             sh './deploy_prod.sh'
          }
