@@ -1,14 +1,35 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+module.exports = {
+  webpack(config, { isServer, dev }) {
+    config.experiments = {
+      asyncWebAssembly: true,
+      layers: true,
+      topLevelAwait: true
+    };
 
-module.exports = withBundleAnalyzer({
-  poweredByHeader: false,
-  trailingSlash: true,
-  basePath: '',
-  // The starter code load resources from `public` folder with `router.basePath` in React components.
-  // So, the source code is "basePath-ready".
-  // You can remove `basePath` if you don't need it.
-  reactStrictMode: true,
-});
+    if (!dev && isServer) {
+      config.output.webassemblyModuleFilename = "chunks/[id].wasm";
+      config.plugins.push(new WasmChunksFixPlugin());
+    }
+
+    return config;
+  },
+};
+
+class WasmChunksFixPlugin {
+  apply(compiler) {
+    compiler.hooks.thisCompilation.tap("WasmChunksFixPlugin", (compilation) => {
+      compilation.hooks.processAssets.tap(
+        { name: "WasmChunksFixPlugin" },
+        (assets) =>
+          Object.entries(assets).forEach(([pathname, source]) => {
+            if (!pathname.match(/\.wasm$/)) return;
+            compilation.deleteAsset(pathname);
+
+            const name = pathname.split("/")[1];
+            const info = compilation.assetsInfo.get(pathname);
+            compilation.emitAsset(name, source, info);
+          })
+      );
+    });
+  }
+}
