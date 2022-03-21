@@ -6,6 +6,7 @@ import type { PageConfig } from "next";
 // import { UserResolver } from "../../../../lib/serverless/graphql/resolvers/UserResolver";
 // import { prepareConnection } from "../../../../lib/serverless/utils/db";
 import {ApolloServer, gql} from 'apollo-server-micro'
+import { title } from "process";
 // import typeDefs   from "../../../../lib/serverless/graphql/schemas/"
 // disable next js from handling this route
 export const config: PageConfig = {
@@ -17,23 +18,33 @@ export const config: PageConfig = {
 
 const typeDefs = gql`
   type Query {
-    sayHello: String
+    root: String
+  }
+
+  type apps {
+   id: String
+   title: String
+  }
+
+  extend  type Query  {
+    getAllApps: [apps]
   }
 `;
 
-// const resolvers = {
-//   // Query: {
-//   //   sayHello(parent, args, context) {
-//   //     return 'Hello World!';
-//   //   },
-//   // },
-// };
+const resolvers = {
+  Query: {
+    getAllApps(parent, args, context) {
+      return [{title:'landing platform', technology:'JS / Next.JS', url: '	https://apps.gdceur.eecloud.dynamic.nsn-net.net/npt', }];
+    },
+  },
+};
 
 const apolloServer = new ApolloServer({
   // schema: await buildSchema({
   //   resolvers: [UserResolver],
   // }),
-  typeDefs
+  typeDefs,
+  resolvers
   // context: async ({ req, res, connection }) => {
   //   let databaseConnection = await prepareConnection();
   //   return {
