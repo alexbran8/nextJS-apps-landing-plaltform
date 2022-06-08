@@ -1,5 +1,5 @@
 import { createConnection, getConnection } from "typeorm";
-import { User } from "../entities/User";
+// import { User } from "../entities/User";
 
 let connectionReadyPromise: Promise<void> | null = null;
 
@@ -14,7 +14,6 @@ export function prepareConnection() {
       } catch (error) {
         // no stale connection to clean up
       }
-
       // wait for new default connection
       await createConnection({
         type: "postgres",
@@ -23,7 +22,7 @@ export function prepareConnection() {
         username: "nextjs",
         password: "nextjs",
         port: 5432,
-        entities: [User],
+        // entities: [User],
         synchronize: process.env.NODE_ENV === "development",
         logging: process.env.NODE_ENV === "development",
       });
