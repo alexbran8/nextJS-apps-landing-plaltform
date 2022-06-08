@@ -1,8 +1,17 @@
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import withApollo from 'next-with-apollo';
+// import { ApolloClient } from 'apollo-client';
+// import { InMemoryCache } from 'apollo-cache-inmemory';
+
+import {
+  ApolloClient,
+  ApolloLink,
+  InMemoryCache,
+  // NormalizedCacheObject,
+} from '@apollo/client'
+
+
 import { createHttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
+
 
 // Update the GraphQL endpoint to any instance of GraphQL that you like
 const GRAPHQL_URL = 'http://localhost:3000/api/graphql';
@@ -14,14 +23,12 @@ const link = createHttpLink({
 
 // Export a HOC from next-with-apollo
 // Docs: https://www.npmjs.com/package/next-with-apollo
-export default withApollo(
-  // You can get headers and ctx (context) from the callback params
-  // e.g. ({ headers, ctx, initialState })
-  ({ initialState }) =>
+const client =
     new ApolloClient({
-      link: link,
+      link:(link as unknown) as ApolloLink,
       cache: new InMemoryCache()
         //  rehydrate the cache using the initial data passed from the server:
-        .restore(initialState || {})
+        // .restore(initialState || {})
     })
-);
+// );
+export default client;
