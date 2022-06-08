@@ -14,7 +14,7 @@ import fetch from 'isomorphic-unfetch';
 
 
 // Update the GraphQL endpoint to any instance of GraphQL that you like
-const GRAPHQL_URL = 'http://localhost:3000/api/graphql';
+const GRAPHQL_URL = '/api/graphql';
 
 const link = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
