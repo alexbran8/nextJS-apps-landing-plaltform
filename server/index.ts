@@ -166,7 +166,7 @@ const resolvers = {
           title: "Dashboard",
           id:2,
           technology: "JS / Next.JS",
-          url: "https://apps.gdceur.eecloud.dynamic.nsn-net.net/dashboard",
+          url: "/dashboard",
         },
         {
           title: "CDR",
@@ -355,7 +355,8 @@ app.prepare().then(() => {
   });
 
   apolloServer.start().then((res) => {
-    console.log(res);
+    console.log({res}
+      );
     const graphqlHandler = apolloServer.createHandler({ path: "/" });
     server.use("/api/graphql", graphqlHandler);
     server.listen(process.env.PORT || 3000, (err: string | void) => {

@@ -193,7 +193,7 @@ app.prepare().then(function () {
         return handle(req, res);
     });
     apolloServer.start().then(function (res) {
-        console.log(res);
+        console.log({ res: res });
         var graphqlHandler = apolloServer.createHandler({ path: "/" });
         server.use("/api/graphql", graphqlHandler);
         server.listen(process.env.PORT || 3000, function (err) {
