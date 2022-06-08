@@ -1,7 +1,7 @@
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
-import { useQuerry, useQuery } from '@apollo/react-hooks';
-import JOBS_QUERY from '../utils/jobs.query';
+// import { useQuerry, useQuery } from '@apollo/react-hooks';
+// import JOBS_QUERY from '../utils/jobs.query';
 const RequestSupport = () => (
  // const { data, loading, error } = useQuery(JOBS_QUERY);
   <Main

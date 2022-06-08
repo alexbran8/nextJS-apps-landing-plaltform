@@ -1,5 +1,5 @@
 
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 // import "./style-form.css";
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Form = (props) => {
+export const Form = () => {
   const classes = useStyles();
 
   const [lastname, setLastname] = useState("");

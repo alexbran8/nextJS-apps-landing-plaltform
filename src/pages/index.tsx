@@ -9,12 +9,12 @@ import { Main } from '../templates/Main';
 
 import { useQuery } from '@apollo/react-hooks';
 import JOBS_QUERY from '../utils/jobs.query';
-import { title } from 'process';
-import path from 'path';
+// import { title } from 'process';
+// import path from 'path';
 import Link from 'next/link';
-import { Button, Modal, ModalBody } from 'reactstrap';
+import {  Modal, ModalBody } from 'reactstrap';
 import { useState } from 'react';
-import { table } from 'console';
+// import { table } from 'console';
 
 const Index = () => {
 
@@ -22,6 +22,7 @@ const Index = () => {
 
   const _onClick = () => {
     console.log('click')
+    setModalOpen(!modalOpen)
   }
 
   const _onClick2 = () => {

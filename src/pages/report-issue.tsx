@@ -4,9 +4,9 @@ import { useQuery } from '@apollo/react-hooks';
 //TODO: import new query
 //import SECOND_JOBS_QUERY from '../utils/jobs.query';
 import {JOBS_QUERY} from '../utils/jobs.query';
-import { GetStaticProps } from 'next';
+// import { GetStaticProps } from 'next';
 //import { ggl, ApolloClient, HttpLink, InMemoryCache } from '@apollo-client';
-import ApolloClient from 'apollo-client';
+// import ApolloClient from 'apollo-client';
 import client from "../../utils/apollo-client";
 
 

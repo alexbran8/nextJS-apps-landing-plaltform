@@ -2,16 +2,11 @@
   "name": "next-js-boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon server/index.ts",
-    "build": "next build",
-    "start": "node server/index.ts",
-    "build-stats": "cross-env ANALYZE=true npm run build",
-    "export": "next export",
-    "build-prod": "run-s clean build export",
-    "clean": "rimraf .next out",
-    "lint": "next lint",
-    "build-types": "tsc --noEmit --pretty",
-    "prepare": "husky install"
+    "dev": "ts-node --project tsconfig.server.json server/index.ts",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "next build",
+    "build": "npm run build:next && npm run build:server",
+    "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",

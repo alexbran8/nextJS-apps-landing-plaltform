@@ -1,2 +1,2 @@
-import type { PageConfig } from "next";
+import { PageConfig } from "next";
 export declare const config: PageConfig;
