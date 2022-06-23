@@ -160,7 +160,7 @@ const resolvers = {
           title: "NPT",
           id:1,
           technology: "JS / Next.JS",
-          url: "https://apps.gdceur.eecloud.dynamic.nsn-net.net/npt",
+          url: "/npt",
         },
         {
           title: "Dashboard",
@@ -172,7 +172,7 @@ const resolvers = {
           title: "CDR",
           id:3,
           technology: "JS / Next.JS",
-          url: "https://apps.gdceur.eecloud.dynamic.nsn-net.net/cdrbeta",
+          url: "/cdrbeta",
         },
         {
           title: "CDR (OLD)",
